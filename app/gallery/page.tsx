@@ -76,7 +76,7 @@ export default function Gallery() {
               <div className="text-center py-12">
                 <div className="glass-effect inline-block px-6 py-3 rounded-xl">
                   <p className="text-white/70 text-sm">
-                    🎨 You've reached the end of our gallery
+                    🎨 You&apos;ve reached the end of our gallery
                   </p>
                 </div>
               </div>

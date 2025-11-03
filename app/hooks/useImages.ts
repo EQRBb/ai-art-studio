@@ -9,7 +9,7 @@ interface UseImagesReturn {
   error: string
   hasMore: boolean
   fetchImages: (offset: number, isInitial?: boolean) => Promise<void>
-  loadMoreRef: React.RefObject<HTMLDivElement>
+  loadMoreRef: React.RefObject<HTMLDivElement | null>
 }
 
 export function useImages(): UseImagesReturn {
