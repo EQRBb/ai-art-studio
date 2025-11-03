@@ -1,11 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@supabase-url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase-anon-key",
-    "HUGGINGFACE_API_KEY": "@huggingface-api-key"
-  }
+  "framework": "nextjs"
 }
 
