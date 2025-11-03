@@ -1,11 +1,13 @@
-# 🎨 AI Image Generator Gallery
+# 🎨 AI Art Studio
 
-A beautiful, modern image generator built with Next.js 15, Supabase, and AI-powered image generation. Create stunning images from text prompts and explore them in an elegant gallery.
+A beautiful, modern AI art generator built with Next.js 16, Supabase, and Stable Diffusion XL. Create stunning images from text prompts and explore them in an elegant gallery.
 
-![Tech Stack](https://img.shields.io/badge/Next.js-15-black)
+![Tech Stack](https://img.shields.io/badge/Next.js-16-black)
 ![Supabase](https://img.shields.io/badge/Supabase-Database-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38bdf8)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)
+
+**🚀 Live Demo**: [https://ai-art-studios.vercel.app/](https://ai-art-studios.vercel.app/)
 
 > 🎯 **[View Complete Project Checklist](./FINAL_CHECKLIST.md)** - All 10 deliverables complete!  
 > 🚀 **[Quick Deployment Guide](./DEPLOYMENT_GUIDE.md)** - Deploy in 12 minutes
@@ -22,10 +24,10 @@ A beautiful, modern image generator built with Next.js 15, Supabase, and AI-powe
 
 ## 🚀 Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
+- **Framework**: Next.js 16 (App Router with Turbopack)
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion 12
 - **Database**: Supabase (PostgreSQL)
 - **Storage**: Supabase Storage
 - **AI**: HuggingFace Inference API (Stable Diffusion XL)
@@ -193,18 +195,17 @@ npm run lint         # Run ESLint to check code quality
 
 #### Quick Deploy
 
+The project is already live at [https://ai-art-studios.vercel.app/](https://ai-art-studios.vercel.app/)
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/image-generator-gallery)
 
 #### Manual Deployment Steps
 
 1. **Push to GitHub**
    ```bash
-   git init
    git add .
-   git commit -m "Initial commit: AI Image Generator Gallery"
-   git branch -M main
-   git remote add origin https://github.com/yourusername/image-generator-gallery.git
-   git push -u origin main
+   git commit -m "feat: add new feature"
+   git push origin main
    ```
 
 2. **Deploy on Vercel**
@@ -220,16 +221,18 @@ npm run lint         # Run ESLint to check code quality
    
    In Vercel Dashboard → Settings → Environment Variables, add:
    
-   | Variable | Value | Description |
+   | Variable | Value | Environment |
    |----------|-------|-------------|
-   | `NEXT_PUBLIC_SUPABASE_URL` | `https://xxx.supabase.co` | Your Supabase project URL |
-   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJ...` | Your Supabase anon/public key |
-   | `HUGGINGFACE_API_KEY` | `hf_...` | Your HuggingFace API token |
+   | `NEXT_PUBLIC_SUPABASE_URL` | `https://xxx.supabase.co` | Production, Preview, Development |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJ...` | Production, Preview, Development |
+   | `HUGGINGFACE_API_KEY` | `hf_...` | Production, Preview, Development |
+
+   **Important**: Don't use secret references (like `@secret-name`) in `vercel.json`. Add variables directly through the Vercel UI.
 
 4. **Deploy!**
    - Click **Deploy**
    - Wait ~2-3 minutes for build
-   - Your app will be live at `https://your-project.vercel.app` 🎉
+   - Your app will be live (e.g., `https://ai-art-studios.vercel.app`) 🎉
 
 ### Pre-Deployment Checklist
 
@@ -247,7 +250,7 @@ Before deploying, make sure you've completed:
 ### Post-Deployment
 
 1. **Test the live app**
-   - Visit your Vercel URL
+   - Visit [https://ai-art-studios.vercel.app/](https://ai-art-studios.vercel.app/)
    - Generate a test image
    - Check the gallery
 
@@ -255,7 +258,12 @@ Before deploying, make sure you've completed:
    - Check that images appear in Storage
    - Check that records appear in Database
 
-3. **Custom Domain (Optional)**
+3. **Monitor Performance**
+   - Check Vercel Analytics for performance metrics
+   - Monitor Supabase usage and quotas
+   - Review logs for any errors
+
+4. **Custom Domain (Optional)**
    - Go to Vercel Dashboard → Settings → Domains
    - Add your custom domain
    - Follow DNS configuration instructions
@@ -264,17 +272,18 @@ Before deploying, make sure you've completed:
 
 ### Generate an Image
 
-1. Go to the home page
-2. Enter a descriptive prompt (e.g., "A serene mountain landscape at sunset")
-3. Click **Generate Image**
-4. Wait for the AI to create your image (~10-30 seconds)
-5. Your image will appear and be saved to the gallery
+1. Visit [https://ai-art-studios.vercel.app/](https://ai-art-studios.vercel.app/)
+2. Enter a descriptive prompt (e.g., "A serene mountain landscape at sunset with vibrant colors")
+3. Click **Generate** or press Enter
+4. Wait for the AI to create your image (~30 seconds)
+5. Your image will appear and be automatically saved to the gallery
 
 ### View Gallery
 
 1. Click **Gallery** in the navigation
-2. Browse all generated images
-3. Hover over images to see the prompts
+2. Browse all generated images in a responsive grid
+3. Click on any image to view it in full size
+4. Scroll down to load more images (infinite scroll)
 
 ## 🎨 Features Breakdown
 
@@ -433,6 +442,6 @@ MIT License - feel free to use this project for learning or portfolio purposes!
 
 ---
 
-Made with 💜 by a Vibe-Coder
+**Live Demo**: [https://ai-art-studios.vercel.app/](https://ai-art-studios.vercel.app/)
 
-**Live Demo**: [Add your Vercel URL here after deployment]
+Made with 💜 using Next.js, Supabase & Stable Diffusion XL
