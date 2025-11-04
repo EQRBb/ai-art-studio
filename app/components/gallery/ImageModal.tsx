@@ -70,21 +70,20 @@ export function ImageModal({ image, onClose }: ImageModalProps) {
           className="relative w-full max-w-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close button - top right of modal */}
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 }}
-            onClick={onClose}
-            className="absolute -top-12 sm:-top-14 -right-2 sm:-right-3 p-2.5 sm:p-3 glass-effect text-white hover:text-purple-400 hover:scale-110 transition-all rounded-full shadow-xl z-[60]"
-            aria-label="Close"
-          >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </motion.button>
-
-          <div className="glass-effect rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl">
+          <div className="glass-effect rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl relative">
+            {/* Close button - top right of modal */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              onClick={onClose}
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2.5 sm:p-3 glass-effect text-white hover:text-purple-400 hover:scale-110 transition-all rounded-full shadow-xl z-[60]"
+              aria-label="Close"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
             {/* Image Container */}
             <div className="relative bg-black/50 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
               <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] max-h-[600px]">
