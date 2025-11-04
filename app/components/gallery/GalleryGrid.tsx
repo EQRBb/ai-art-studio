@@ -38,7 +38,7 @@ export function GalleryGrid({ images, onImageClick }: GalleryGridProps) {
                 </div>
               </div>
             </div>
-            <div className="p-3 glass-input">
+            <div className="p-3 glass-input rounded-b-2xl">
               <div className="flex items-center justify-between text-[10px] text-white/60">
                 <span>
                   {new Date(image.created_at).toLocaleDateString('en-US', {

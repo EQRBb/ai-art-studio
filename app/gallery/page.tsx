@@ -33,14 +33,12 @@ export default function Gallery() {
           className="text-center mb-8 sm:mb-10"
         >
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 px-4">
-            Your{' '}
+            Our{' '}
             <span className="text-gradient animate-gradient">
               Creative Gallery
             </span>
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto mb-4 sm:mb-6 px-4">
-            {images.length} {images.length === 1 ? 'masterpiece' : 'masterpieces'} created with AI
-          </p>
+         
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs sm:text-sm rounded-lg sm:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all hover:scale-105 shadow-lg font-medium"
