@@ -30,7 +30,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  // Immediately hide content to prevent FOUC
+                  var style = document.createElement('style');
+                  style.textContent = 'html:not(.styles-loaded) { visibility: hidden !important; opacity: 0 !important; }';
+                  document.head.appendChild(style);
+                  
+                  function showContent() {
+                    requestAnimationFrame(function() {
+                      requestAnimationFrame(function() {
+                        document.documentElement.classList.add('styles-loaded');
+                      });
+                    });
+                  }
+                  
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', showContent);
+                  } else {
+                    showContent();
+                  }
+                  
+                  // Fallback: show content after a short delay even if styles aren't loaded
+                  setTimeout(function() {
+                    document.documentElement.classList.add('styles-loaded');
+                  }, 100);
+                } catch(e) {
+                  document.documentElement.classList.add('styles-loaded');
+                }
+              })();
+            `,
+          }}
+        />
         <Background />
         <Navigation />
 

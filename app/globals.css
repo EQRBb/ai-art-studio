@@ -214,3 +214,15 @@ textarea.glass-input::-webkit-scrollbar-thumb:hover {
 html {
   scroll-behavior: smooth;
 }
+
+/* Prevent FOUC - hide content until styles are loaded */
+html:not(.styles-loaded) {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+html.styles-loaded {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: opacity 0.2s ease-in;
+}
