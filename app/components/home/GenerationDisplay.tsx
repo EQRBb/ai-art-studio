@@ -22,10 +22,11 @@ export function GenerationDisplay({ loading, generatedImage, generatedPrompt, fu
           key="loading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className={`${fullWidth ? 'w-full rounded-lg glass-input' : 'glass-effect rounded-xl sm:rounded-2xl shadow-2xl max-w-2xl mx-auto'}`}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+          className={`${fullWidth ? 'w-full rounded-lg overflow-hidden' : 'glass-effect rounded-xl sm:rounded-2xl shadow-2xl max-w-2xl mx-auto overflow-hidden'}`}
         >
-          <div className={`relative w-full ${fullWidth ? 'rounded-lg overflow-hidden' : ''}`} style={{ paddingBottom: '100%' }}>
+          <div className={`relative w-full bg-black/20`} style={{ paddingBottom: '100%' }}>
             <div className="absolute inset-0 flex items-center justify-center">
               <GenerationAnimation />
             </div>
@@ -39,7 +40,8 @@ export function GenerationDisplay({ loading, generatedImage, generatedPrompt, fu
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className={`${fullWidth ? 'w-full overflow-hidden rounded-lg glass-input' : 'glass-effect rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl max-w-2xl mx-auto'} group`}
+          transition={{ duration: 0.3 }}
+          className={`${fullWidth ? 'w-full overflow-hidden rounded-lg' : 'glass-effect rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl max-w-2xl mx-auto'} group`}
         >
           {clickable && onImageClick ? (
             <div
@@ -98,7 +100,7 @@ export function GenerationDisplay({ loading, generatedImage, generatedPrompt, fu
               </div>
             </div>
           )}
-          <div className="p-3 sm:p-4 flex items-center justify-between glass-input border-t border-white/10">
+          <div className="p-3 sm:p-4 flex items-center justify-between bg-black/20 backdrop-blur-sm border-t border-white/10">
             <span className="text-white/70 text-xs sm:text-sm">✨ Saved to gallery</span>
             <Link
               href="/gallery"
@@ -115,9 +117,10 @@ export function GenerationDisplay({ loading, generatedImage, generatedPrompt, fu
           key="placeholder"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`${fullWidth ? 'w-full overflow-hidden rounded-lg glass-input' : 'glass-effect rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl max-w-2xl mx-auto'}`}
+          transition={{ duration: 0.3 }}
+          className={`${fullWidth ? 'w-full overflow-hidden rounded-lg' : 'glass-effect rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl max-w-2xl mx-auto'}`}
         >
-          <div className={`relative w-full bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-blue-500/20 overflow-hidden ${fullWidth ? 'rounded-lg' : ''}`} style={{ paddingBottom: '100%' }}>
+          <div className={`relative w-full bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-blue-500/20 overflow-hidden`} style={{ paddingBottom: '100%' }}>
             {/* Animated background effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 animate-pulse" />
             
