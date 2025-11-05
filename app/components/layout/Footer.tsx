@@ -22,7 +22,7 @@ export function Footer() {
             <h4 className="text-white font-semibold text-xs sm:text-sm mb-2 sm:mb-3">Pages</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-[10px] sm:text-xs text-white/60">
               <li><Link href="/" className="hover:text-white transition-colors">Features</Link></li>
-              <li><Link href="/gallery" className="hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/" className="hover:text-white transition-colors">Pricing</Link></li>
               <li><Link href="/" className="hover:text-white transition-colors">Affiliate</Link></li>
               <li><Link href="/" className="hover:text-white transition-colors">Blog</Link></li>
             </ul>
@@ -63,7 +63,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 pt-4 sm:pt-6 text-center">
           <p className="text-[10px] sm:text-xs text-white/50">
-            © Copyright dex.ai 2025
+            © Copyright 2025
           </p>
         </div>
       </div>
