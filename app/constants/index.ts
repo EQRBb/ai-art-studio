@@ -51,5 +51,5 @@ export const FAQ_ITEMS = [
   },
 ] as const
 
-export const IMAGES_PER_PAGE = 15
+export const IMAGES_PER_PAGE = 30
 
