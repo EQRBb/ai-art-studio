@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 lg:px-8 pt-2 sm:pt-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 md:px-6 lg:px-8 pt-2 sm:pt-4 backdrop-blur-sm filter-[url(#glass-distortion)]">
       <div className="max-w-7xl mx-auto glass-effect rounded-xl sm:rounded-2xl border border-white/20 shadow-2xl">
         <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4 md:px-6">
           {/* Logo */}
