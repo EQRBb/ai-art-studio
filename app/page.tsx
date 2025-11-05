@@ -8,6 +8,7 @@ import { Features } from './components/home/Features'
 import { Sidebar } from './components/home/Sidebar'
 import { useImageGeneration } from './hooks/useImageGeneration'
 import { Stats } from './components/home/Stats'
+import { GalleryPreview } from './components/home/GalleryPreview'
 
 export default function Home() {
   const promptInputRef = useRef<HTMLTextAreaElement>(null)
@@ -38,33 +39,19 @@ export default function Home() {
           {/* Generation Area - Centered with larger width */}
           <div className="max-w-3xl mx-auto space-y-6">
             {/* Input Form */}
-            <GenerationForm
-              prompt={prompt}
-              setPrompt={setPrompt}
-              loading={loading}
-              error={error}
-              onGenerate={handleGenerate}
-              promptInputRef={promptInputRef}
-            />
+
 
             {/* Generated Image Display - Directly Below Input */}
-            <Sidebar
-              loading={loading}
-              generatedImage={generatedImage}
-              generatedPrompt={generatedPrompt}
-              recentImages={recentImages}
-              recentImagesLoading={recentImagesLoading}
-              promptInputRef={promptInputRef}
-            />
-          </div>
 
+            
+          </div>
+        </div>
+      </div>
+      <GalleryPreview images={recentImages} loading={recentImagesLoading} />
           {/* FAQ Section */}
           <div className="max-w-4xl mx-auto">
             <FAQ />
           </div>
-        </div>
-      </div>
-
       {/* Features Section */}
       <Features />
     </div>

@@ -33,8 +33,6 @@ export function Sidebar({
         generatedImage={generatedImage}
         generatedPrompt={generatedPrompt}
       />
-
-      <GalleryPreview images={recentImages} loading={recentImagesLoading} />
     </motion.div>
   )
 }
