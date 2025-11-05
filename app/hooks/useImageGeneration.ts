@@ -26,7 +26,7 @@ export function useImageGeneration(): UseImageGenerationReturn {
   const refreshRecentImages = useCallback(async () => {
     try {
       setRecentImagesLoading(true)
-      const response = await fetch('/api/images?limit=4&offset=0')
+      const response = await fetch('/api/images?limit=15&offset=0')
       if (response.ok) {
         const data = await response.json()
         setRecentImages(data.images)
