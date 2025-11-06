@@ -35,12 +35,16 @@ export function CreateImageDisplay({
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="h-full"
+        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -10, scale: 0.98 }}
+        transition={{ 
+          duration: 0.5, 
+          ease: [0.16, 1, 0.3, 1] 
+        }}
+        className="w-full"
       >
-        <div className="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-2xl h-full flex items-center justify-center">
+        <div className="glass-effect rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xl max-w-4xl mx-auto">
           <GenerationDisplay
             loading={loading}
             generatedImage={generatedImage}

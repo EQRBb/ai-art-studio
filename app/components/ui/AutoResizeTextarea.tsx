@@ -10,9 +10,15 @@ export const AutoResizeTextarea = forwardRef<HTMLTextAreaElement, AutoResizeText
 
     useEffect(() => {
       const textarea = (ref && typeof ref === 'object' && ref.current) || internalRef.current
-      if (textarea) {
+      if (textarea && typeof window !== 'undefined') {
         textarea.style.height = 'auto'
-        textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px`
+        // Get max-height from computed styles or default to 300px
+        const computedStyle = window.getComputedStyle(textarea)
+        const maxHeightStr = computedStyle.maxHeight
+        const maxHeight = maxHeightStr && maxHeightStr !== 'none' 
+          ? parseInt(maxHeightStr) 
+          : 300
+        textarea.style.height = `${Math.min(textarea.scrollHeight, maxHeight)}px`
       }
     }, [value, ref])
 

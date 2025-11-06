@@ -71,11 +71,11 @@ export function ToolsCarousel() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
-      className="relative px-4 py-12 md:py-16 lg:py-20 overflow-x-hidden"
+      className="relative px-4 py-12 md:py-16 lg:py-24 overflow-x-hidden"
     >
       {/* Section Title */}
       <motion.h2
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6 md:mb-10 lg:mb-16"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-8 md:mb-12 lg:mb-20"
         animate={{
           textShadow: [
             "0 0 20px rgba(168, 85, 247, 0.3)",
@@ -95,7 +95,7 @@ export function ToolsCarousel() {
       </motion.h2>
 
       {/* Desktop Carousel */}
-      <div className="hidden md:block relative h-[500px] lg:h-[600px] mb-8">
+      <div className="hidden md:block relative h-[550px] lg:h-[650px] xl:h-[700px] mb-8 mt-4 md:mt-8">
         <div className="relative w-full h-full flex items-center justify-center">
          
           {tools.map((tool, index) => {
@@ -150,7 +150,7 @@ export function ToolsCarousel() {
       </div>
 
       {/* Mobile Carousel */}
-      <div className="md:hidden">
+      <div className="md:hidden mt-4">
         {/* Tab buttons */}
         <div className="flex justify-around mb-6 gap-2">
           {tools.map((tool, index) => (
@@ -211,7 +211,7 @@ function ToolCard({ tool, isCenter, isMobile = false, router }: ToolCardProps) {
       transition={{ duration: 0.3 }}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl mt-15">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
         {/* Image */}
         <Image
           src={tool.imageUrl}
@@ -254,7 +254,7 @@ function ToolCard({ tool, isCenter, isMobile = false, router }: ToolCardProps) {
 
       {/* Content - Only visible on center slide */}
       {(isCenter || isMobile) && (
-        <div className="mt-6 mb-6 text-center px-4 space-y-4">
+        <div className="mt-6 mb-4 text-center px-4 space-y-4">
           <p className="text-white text-base md:text-lg font-normal leading-relaxed">
             {tool.description}
           </p>

@@ -2,10 +2,8 @@
 
 import { useRef } from 'react'
 import { Hero } from './components/home/Hero'
-import { GenerationForm } from './components/home/GenerationForm'
 import { FAQ } from './components/home/FAQ'
 import { Features } from './components/home/Features'
-import { Sidebar } from './components/home/Sidebar'
 import { useImageGeneration } from './hooks/useImageGeneration'
 import { Stats } from './components/home/Stats'
 import { GalleryPreview } from './components/home/GalleryPreview'
@@ -13,18 +11,7 @@ import { Testimonials } from './components/home/Testimonials'
 import { ToolsCarousel } from './components/home/ToolsCarousel/ToolsCarousel'
 
 export default function Home() {
-  const promptInputRef = useRef<HTMLTextAreaElement>(null)
-  const {
-    prompt,
-    setPrompt,
-    loading,
-    error,
-    generatedImage,
-    generatedPrompt,
-    handleGenerate,
-    recentImages,
-    recentImagesLoading,
-  } = useImageGeneration()
+  const { recentImages, recentImagesLoading } = useImageGeneration()
 
   return (
     <div className="relative">
