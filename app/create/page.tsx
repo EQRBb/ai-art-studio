@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { AnimatePresence } from 'framer-motion'
 import { useImageGeneration } from '@/app/hooks/useImageGeneration'
@@ -13,7 +13,7 @@ import { GalleryPreview } from '../components/home/GalleryPreview'
 import { FAQ } from '../components/home/FAQ'
 import { getTemplateById } from '@/lib/templates'
 
-export default function CreatePage() {
+function CreatePageContent() {
   const searchParams = useSearchParams()
   const promptInputRef = useRef<HTMLTextAreaElement>(null)
   const {
@@ -95,6 +95,14 @@ export default function CreatePage() {
       </div>  <GalleryPreview images={recentImages} loading={recentImagesLoading} />
         <FAQ />
     </div>
+  )
+}
+
+export default function CreatePage() {
+  return (
+    <Suspense fallback={null}>
+      <CreatePageContent />
+    </Suspense>
   )
 }
 
