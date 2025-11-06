@@ -21,6 +21,7 @@ A beautiful, modern AI art generator built with Next.js 16, Supabase, and Stable
 ## 🚀 Tech Stack
 
 - **Framework**: Next.js 16 (App Router)
+- **Library**: React 19
 - **Language**: TypeScript 5
 - **Styling**: Tailwind CSS 4
 - **Animations**: Framer Motion 12
@@ -32,7 +33,7 @@ A beautiful, modern AI art generator built with Next.js 16, Supabase, and Stable
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 18.18+ or 20+
 - [Supabase](https://supabase.com) account
 - [HuggingFace](https://huggingface.co) account with API access
 
@@ -139,6 +140,7 @@ image-generator-gallery/
 - **"AI model is loading"** - Wait 20-30 seconds for model warm-up
 - **Images not appearing** - Verify Supabase storage bucket is public and policies are set
 - **Environment variables not working** - Restart dev server after adding `.env.local`
+- **Images not loading in Next/Image** - Ensure `next.config.ts` includes your Supabase storage domain under `images.remotePatterns`.
 
 ## 📄 License
 
