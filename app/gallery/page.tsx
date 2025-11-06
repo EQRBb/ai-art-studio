@@ -25,29 +25,40 @@ export default function Gallery() {
 
   return (
     <div className="relative min-h-screen">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="px-4 sm:px-3 lg:px-4 py-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8 sm:mb-10"
         >
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 px-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-5 px-4">
             Our{' '}
             <span className="text-gradient animate-gradient">
               Creative Gallery
             </span>
           </h1>
          
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs sm:text-sm rounded-lg sm:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all hover:scale-105 shadow-lg font-medium"
-          >
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-            Create New
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <Link
+              href="/templates"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 glass-effect hover:bg-white/10 text-white text-xs sm:text-sm rounded-lg sm:rounded-xl transition-all hover:scale-105 border border-white/20 shadow-lg font-medium"
+            >
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+              </svg>
+              Browse Templates
+            </Link>
+            <Link
+              href="/create"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs sm:text-sm rounded-lg sm:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all hover:scale-105 shadow-lg font-medium"
+            >
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Create New
+            </Link>
+          </div>
         </motion.div>
 
         {/* Gallery Grid */}

@@ -36,12 +36,12 @@ const tools: Tool[] = [
     imageUrl: '/images/carousel/galery.jpg'
   },
   {
-    id: 'resources',
-    title: 'Resources & Tips',
-    description: 'Get the best results! Discover inspiration, guides, and tips for your creative journey.',
-    badge: 'Resources',
-    buttonText: 'Get Inspired',
-    route: '#faq',
+    id: 'teamleates',
+    title: 'Teamleates',
+    description: 'Browse templates for inspiration and a quick start to your creations.',
+    badge: 'Teamleates',
+    buttonText: 'Browse Templates',
+    route: '/templates',
     imageUrl: '/images/carousel/faq.jpg'
   }
 ]
@@ -151,22 +151,7 @@ export function ToolsCarousel() {
 
       {/* Mobile Carousel */}
       <div className="md:hidden mt-4">
-        {/* Tab buttons */}
-        <div className="flex justify-around mb-6 gap-2">
-          {tools.map((tool, index) => (
-            <button
-              key={tool.id}
-              onClick={() => setCurrentIndex(index)}
-              className={`text-sm font-light uppercase tracking-wider transition-all duration-300 px-4 py-2 rounded-lg ${
-                currentIndex === index
-                  ? 'text-white opacity-100 glass-effect'
-                  : 'text-white/40 opacity-60'
-              }`}
-            >
-              {tool.badge}
-            </button>
-          ))}
-        </div>
+      
 
         {/* Mobile Cards */}
         <div className="-mx-4 px-4 overflow-x-auto snap-x snap-mandatory flex gap-4 pb-4">
