@@ -67,7 +67,7 @@ export function CreateImageDisplay({
             className="pointer-events-none absolute -inset-6 rounded-3xl bg-gradient-to-b from-fuchsia-500/10 via-sky-400/10 to-emerald-400/10 blur-2xl"
           />
 
-          <div className="relative glass-effect rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-2xl w-full max-w-4xl mx-auto transition-all duration-300 hover:shadow-emerald-500/10">
+          <div className="relative glass-effect rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-2xl w-full max-w-3xl mx-auto transition-all duration-300 hover:shadow-emerald-500/10">
             {/* header with prompt + status */}
             <div className="flex items-center justify-between px-4 sm:px-6 pt-4 sm:pt-6">
               <span
@@ -89,7 +89,7 @@ export function CreateImageDisplay({
 
             {/* content */}
             <div className="p-3 sm:p-6">
-              <div className="relative rounded-xl overflow-hidden ring-1 ring-white/10 bg-black/20 grid place-items-center max-h-[70vh] sm:max-h-[75vh] [&_img]:max-h-[70vh] sm:[&_img]:max-h-[75vh] [&_img]:h-auto [&_img]:w-auto [&_canvas]:max-h-[70vh] sm:[&_canvas]:max-h-[75vh]">
+              <div className={`relative rounded-xl overflow-hidden ring-1 ring-white/10 bg-black/20 grid place-items-center max-h-[60vh] sm:max-h-[65vh] ${loading ? 'min-h-[50vh]' : ''} [&_img]:max-h-[60vh] sm:[&_img]:max-h-[65vh] [&_img]:h-auto [&_img]:w-auto [&_canvas]:max-h-[60vh] sm:[&_canvas]:max-h-[65vh]`}>
                 <GenerationDisplay
                   loading={loading}
                   generatedImage={generatedImage}

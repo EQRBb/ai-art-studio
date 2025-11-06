@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { templates, getTemplatesByCategory } from '@/lib/templates'
 import { TemplatesGrid, CategoryFilter } from '@/app/components/templates'
 
@@ -31,6 +32,14 @@ export default function TemplatesPage() {
           <p className="text-white/50 text-xs sm:text-sm">
             {filteredTemplates.length} {filteredTemplates.length === 1 ? 'template' : 'templates'} available
           </p>
+          <div className="mt-6 sm:mt-8 flex justify-center">
+            <Link
+              href="/create"
+              className="inline-flex items-center px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg hover:shadow-purple-500/40 transition-all"
+            >
+              ✨ Create
+            </Link>
+          </div>
         </motion.div>
 
         {/* Category Filter */}
