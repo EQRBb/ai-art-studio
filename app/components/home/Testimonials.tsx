@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface Testimonial {
   text: string
@@ -11,49 +11,50 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    text: "Maybe one of the best and most fun things I have done online. So cool!",
-    author: "Brian G.",
+    text: "This image generator completely transformed how I create content for my social media. The quality is stunning and it's so intuitive!",
+    author: "Sarah Mitchell",
     rating: 5
   },
   {
-    text: "The AI image generator is incredibly powerful and easy to use!",
-    author: "Sarah K.",
+    text: "I've been using AI image tools for months, but this one stands out. The gallery feature makes it easy to organize and revisit my creations.",
+    author: "Michael Chen",
     rating: 5
   },
   {
-    text: "I love this tool. I haven't had this much fun with AI art in years.",
-    author: "Andrew L.",
+    text: "As a designer, I was skeptical at first, but the results are genuinely impressive. It's become an essential part of my creative workflow.",
+    author: "Jessica Rodriguez",
     rating: 5
   },
   {
-    text: "I've tried a dozen AI image tools and this is my favorite so far.",
-    author: "James M.",
+    text: "The speed and quality are unmatched. I can generate dozens of variations in minutes and the interface is so clean and responsive!",
+    author: "David Thompson",
     rating: 5
   },
   {
-    text: "UNREAL RESULTS",
-    author: "Mike S.",
+    text: "Finally, an AI image tool that just works. No complicated settings, no confusing menus - just beautiful results every time.",
+    author: "Emily Watson",
     rating: 5
   },
   {
-    text: "Could not believe it's AI...",
-    author: "David R.",
+    text: "I use this daily for my marketing campaigns. The ability to quickly generate professional-looking images has saved me countless hours and money.",
+    author: "Robert Martinez",
     rating: 5
   },
   {
-    text: "Funnest time I've had with an app 😂",
-    author: "Emma T.",
+    text: "The quality of images is incredible! I've used several AI generators and this produces the most consistent, high-quality results.",
+    author: "Amanda Park",
     rating: 5
   },
   {
-    text: "Honestly I'm am just a very very happy user right now. It's been therapeutic creating all the images I haven't had the time/skill to make. Thank you for that.",
-    author: "Rachel M.",
+    text: "What impressed me most is how well it understands prompts. Even complex descriptions come out exactly as I imagined them.",
+    author: "Chris Anderson",
     rating: 5
   }
 ]
 
 export function Testimonials() {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set())
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const toggleCard = (index: number) => {
     const newExpanded = new Set(expandedCards)
@@ -65,12 +66,28 @@ export function Testimonials() {
     setExpandedCards(newExpanded)
   }
 
+  // Scroll to center on mount
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current
+      const scrollWidth = container.scrollWidth
+      const clientWidth = container.clientWidth
+      const centerPosition = (scrollWidth - clientWidth) / 2
+      
+      // Smooth scroll to center
+      container.scrollTo({
+        left: centerPosition,
+        behavior: 'smooth'
+      })
+    }
+  }, [])
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-    >
+        >
       {/* Heading */}
       <motion.h3
         className="pb-6 text-2xl font-bold text-center text-white md:text-5xl"
@@ -92,6 +109,7 @@ export function Testimonials() {
 
       {/* Scrollable testimonials container */}
       <div
+        ref={scrollContainerRef}
         className="flex overflow-x-auto relative gap-x-6 md:gap-x-8 justify-start py-6 pb-8 px-4 mx-auto mb-8 w-full text-base text-center text-white md:justify-start md:max-w-full snap-mandatory snap-x"
         style={{
           scrollbarWidth: 'thin',

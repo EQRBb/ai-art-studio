@@ -2,6 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 interface Tool {
   id: string
@@ -9,42 +11,44 @@ interface Tool {
   description: string
   badge: string
   buttonText: string
+  route: string
   providers?: string[]
-  imagePlaceholder: string
+  imageUrl: string
 }
 
 const tools: Tool[] = [
   {
-    id: 'ai-image',
-    title: 'AI Image Generation',
-    description: 'Turn your ideas into stunning visuals with cutting-edge AI models',
-    badge: 'AI Image',
-    buttonText: 'Explore AI Image',
-    providers: ['Stable Diffusion XL', 'FLUX', 'Midjourney v6'],
-    imagePlaceholder: 'bg-gradient-to-br from-purple-600 via-pink-500 to-purple-700'
+    id: 'generator',
+    title: 'Image Generator',
+    description: 'Create high-quality images from your ideas using our intuitive generator.',
+    badge: 'Generator',
+    buttonText: 'Try Generator',
+    route: '/create',
+    imageUrl: '/images/carousel/generator.jpg'
   },
   {
-    id: 'ai-upscale',
-    title: 'AI Upscaling',
-    description: 'Enhance your images to 4K quality with advanced AI upscaling',
-    badge: 'AI Upscale',
-    buttonText: 'Explore AI Upscale',
-    providers: ['Real-ESRGAN', 'GFPGAN', 'CodeFormer'],
-    imagePlaceholder: 'bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-700'
+    id: 'community-gallery',
+    title: 'Community Gallery',
+    description: 'Explore a vibrant collection of images created by people just like you.',
+    badge: 'Gallery',
+    buttonText: 'View Gallery',
+    route: '/gallery',
+    imageUrl: '/images/carousel/galery.jpg'
   },
   {
-    id: 'ai-enhance',
-    title: 'AI Enhancement',
-    description: 'Perfect your images with intelligent enhancement and restoration',
-    badge: 'AI Enhance',
-    buttonText: 'Explore AI Enhance',
-    providers: ['DeepAI', 'Remini', 'Let\'s Enhance'],
-    imagePlaceholder: 'bg-gradient-to-br from-pink-600 via-rose-500 to-pink-700'
+    id: 'resources',
+    title: 'Resources & Tips',
+    description: 'Get the best results! Discover inspiration, guides, and tips for your creative journey.',
+    badge: 'Resources',
+    buttonText: 'Get Inspired',
+    route: '#faq',
+    imageUrl: '/images/carousel/faq.jpg'
   }
 ]
 
 export function ToolsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const router = useRouter()
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % tools.length)
@@ -67,7 +71,7 @@ export function ToolsCarousel() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 }}
-      className="relative px-4 py-12 md:py-16 lg:py-20"
+      className="relative px-4 py-12 md:py-16 lg:py-20 overflow-x-hidden"
     >
       {/* Section Title */}
       <motion.h2
@@ -116,12 +120,12 @@ export function ToolsCarousel() {
                 style={{
                   width: '59%',
                   display: position === 'hidden' ? 'none' : 'block'
-                }}
-              >
-                <ToolCard tool={tool} isCenter={position === 'center'} />
-              </motion.div>
-            )
-          })}
+                  }}
+                >
+                  <ToolCard tool={tool} isCenter={position === 'center'} router={router} />
+                </motion.div>
+              )
+            })}
 
           {/* Navigation Arrows */}
           <button
@@ -165,13 +169,13 @@ export function ToolsCarousel() {
         </div>
 
         {/* Mobile Cards */}
-        <div className="overflow-x-auto snap-x snap-mandatory flex gap-4 pb-4">
+        <div className="-mx-4 px-4 overflow-x-auto snap-x snap-mandatory flex gap-4 pb-4">
           {tools.map((tool, index) => (
             <div
               key={tool.id}
               className="snap-center flex-shrink-0 w-[85%]"
             >
-              <ToolCard tool={tool} isCenter={currentIndex === index} isMobile />
+              <ToolCard tool={tool} isCenter={currentIndex === index} isMobile router={router} />
             </div>
           ))}
         </div>
@@ -184,9 +188,22 @@ interface ToolCardProps {
   tool: Tool
   isCenter: boolean
   isMobile?: boolean
+  router: any
 }
 
-function ToolCard({ tool, isCenter, isMobile = false }: ToolCardProps) {
+function ToolCard({ tool, isCenter, isMobile = false, router }: ToolCardProps) {
+  const handleClick = () => {
+    if (tool.route.startsWith('#')) {
+      // Scroll to anchor
+      const element = document.querySelector(tool.route)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    } else {
+      // Navigate to route
+      router.push(tool.route)
+    }
+  }
   return (
     <motion.div
       className="relative rounded-2xl overflow-hidden"
@@ -194,9 +211,15 @@ function ToolCard({ tool, isCenter, isMobile = false }: ToolCardProps) {
       transition={{ duration: 0.3 }}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-        {/* Placeholder Image with gradient */}
-        <div className={`w-full h-full ${tool.imagePlaceholder}`} />
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl mt-15">
+        {/* Image */}
+        <Image
+          src={tool.imageUrl}
+          alt={tool.title}
+          fill
+          className="object-cover"
+          priority={isCenter}
+        />
         
         {/* Bottom blur effect */}
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -231,14 +254,15 @@ function ToolCard({ tool, isCenter, isMobile = false }: ToolCardProps) {
 
       {/* Content - Only visible on center slide */}
       {(isCenter || isMobile) && (
-        <div className="mt-6 text-center px-4 space-y-4">
+        <div className="mt-6 mb-6 text-center px-4 space-y-4">
           <p className="text-white text-base md:text-lg font-normal leading-relaxed">
             {tool.description}
           </p>
           
           {/* CTA Button */}
           <motion.button
-            className="relative text-white text-base px-8 py-3.5 rounded-full font-medium overflow-hidden group border border-white/20 hover:border-purple-400/50 transition-all"
+            onClick={handleClick}
+            className="relative text-white text-base px-8 py-3.5 rounded-full font-medium overflow-hidden group border border-white/20 hover:border-purple-400/50 transition-all cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             style={{

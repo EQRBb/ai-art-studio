@@ -93,23 +93,15 @@ export function GalleryPreview({ images, loading }: GalleryPreviewProps) {
           </div>
         )}
 
-        {/* Bottom Gradient Overlay with Button */}
-        <div className="absolute bottom-0 left-0 right-0 w-full grid justify-center items-center pb-8 pt-36 z-10 pointer-events-none">
-          {/* Multi-layer gradient for smooth transition */}
-          <div 
-            className="absolute inset-0" 
-            style={{
-              background: 'linear-gradient(to top, rgba(10, 15, 30, 0.98) 0%, rgba(30, 27, 75, 0.85) 20%, rgba(88, 28, 135, 0.4) 50%, transparent 100%)'
-            }}
-          />
-          
+        {/* Bottom Blur Overlay with Button */}
+        <div className="absolute bottom-0 left-0 right-0 w-full grid justify-center items-center pb-8 pt-48 z-10 pointer-events-none">
           {/* Backdrop blur effect */}
           <div 
             className="absolute inset-0" 
             style={{
-              backdropFilter: 'blur(8px) brightness(0.7)',
-              WebkitBackdropFilter: 'blur(8px) brightness(0.7)',
-              maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.3) 50%, transparent 75%)'
             }}
           />
           

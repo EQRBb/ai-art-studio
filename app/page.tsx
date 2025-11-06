@@ -10,7 +10,7 @@ import { useImageGeneration } from './hooks/useImageGeneration'
 import { Stats } from './components/home/Stats'
 import { GalleryPreview } from './components/home/GalleryPreview'
 import { Testimonials } from './components/home/Testimonials'
-import { ToolsCarousel } from './components/home/ToolsCarousel'
+import { ToolsCarousel } from './components/home/ToolsCarousel/ToolsCarousel'
 
 export default function Home() {
   const promptInputRef = useRef<HTMLTextAreaElement>(null)
@@ -44,10 +44,10 @@ export default function Home() {
       <Testimonials />
 
       <GalleryPreview images={recentImages} loading={recentImagesLoading} />
+      
       {/* FAQ Section */}
-      <div className="max-w-4xl mx-auto">
-        <FAQ />
-      </div>
+      <FAQ />
+      
       {/* Features Section */}
       <Features />
     </div>

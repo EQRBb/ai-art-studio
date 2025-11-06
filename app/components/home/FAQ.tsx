@@ -8,63 +8,110 @@ export function FAQ() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-xl"
-    >
-      <div className="flex items-center gap-2 mb-4 sm:mb-5">
-        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <h2 className="text-white font-bold text-base sm:text-lg">
-          Common Questions
-        </h2>
-      </div>
-      
-      <div className="space-y-1 sm:space-y-2">
-        {FAQ_ITEMS.slice(0, 3).map((faq, index) => (
-          <div key={index} className="border-b border-white/5 last:border-0">
-            <button
-              onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-              className="w-full text-left p-2.5 sm:p-3 rounded-lg transition-all hover:bg-white/5 flex items-center justify-between group"
+    <section className="w-full relative py-8 sm:py-12 px-3 sm:px-4 md:px-6">
+      <motion.div
+        id="faq"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="max-w-4xl mx-auto"
+      >
+        {/* Section Heading */}
+        <motion.h2
+          className="text-2xl sm:text-4xl font-bold text-center text-white mb-8 sm:mb-12"
+          animate={{
+            textShadow: [
+              "0 0 15px rgba(168, 85, 247, 0.2)",
+              "0 0 25px rgba(168, 85, 247, 0.4)",
+              "0 0 15px rgba(168, 85, 247, 0.2)"
+            ]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          Frequently Asked Questions
+        </motion.h2>
+
+        {/* FAQ Items */}
+        <div className="space-y-3 sm:space-y-4">
+          {FAQ_ITEMS.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="rounded-2xl sm:rounded-3xl border-2 backdrop-blur-xl shadow-lg relative overflow-hidden"
+              style={{
+                background: 'rgba(30, 20, 50, 0.7)',
+                borderColor: 'rgba(139, 92, 246, 0.6)',
+              }}
+              whileHover={{
+                scale: 1.01,
+                y: -4,
+                borderColor: 'rgba(168, 85, 247, 0.9)',
+                boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)',
+                transition: { duration: 0.2 }
+              }}
             >
-              <span className="text-white text-xs sm:text-sm font-medium pr-3">
-                {faq.question}
-              </span>
-              <motion.svg
-                className="w-4 h-4 text-purple-400 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                animate={{ rotate: expandedFaq === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                className="w-full text-left p-4 sm:p-6 transition-all flex items-start sm:items-center justify-between group gap-4"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </motion.svg>
-            </button>
-            <AnimatePresence>
-              {expandedFaq === index && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
+                <span className="text-white text-sm sm:text-lg font-semibold pr-2 leading-relaxed">
+                  {faq.question}
+                </span>
+                <motion.svg
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 flex-shrink-0 mt-0.5 sm:mt-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  animate={{ rotate: expandedFaq === index ? 180 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  style={{
+                    filter: 'drop-shadow(0 0 4px rgba(168, 85, 247, 0.4))'
+                  }}
                 >
-                  <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3 text-white/60 text-xs sm:text-sm leading-relaxed">
-                    {faq.answer}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
-      </div>
-    </motion.div>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </motion.svg>
+              </button>
+              
+              <AnimatePresence>
+                {expandedFaq === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0">
+                      <div className="text-white/70 text-sm sm:text-base leading-relaxed border-t border-white/10 pt-4">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Decorative elements */}
+        <motion.div
+          className="flex justify-center gap-2 mt-8 sm:mt-12 opacity-50"
+          animate={{ opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-2 h-2 rounded-full bg-purple-400"></div>
+          <div className="w-2 h-2 rounded-full bg-pink-400"></div>
+          <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+        </motion.div>
+      </motion.div>
+    </section>
   )
 }
 
