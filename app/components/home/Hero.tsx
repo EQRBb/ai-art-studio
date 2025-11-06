@@ -10,7 +10,7 @@ export function Hero() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-center py-12 sm:py-16 md:py-20 lg:py-24 px-4"
+      className="text-center pt-4 sm:pt-6 md:pt-8 lg:pt-10 pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-4"
     >
       {/* Badge with floating animation */}
       <motion.div 
@@ -63,7 +63,7 @@ export function Hero() {
         Transform your ideas into beautiful images with AI. Free, fast, and unlimited.
       </motion.p>
       
-      {/* CTA Button with pulse and hover animations */}
+      {/* CTA Button with enhanced animations */}
       <motion.div
         className="flex justify-center items-center"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -74,48 +74,100 @@ export function Hero() {
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         <motion.button 
-          className="glass-button text-white text-base sm:text-lg md:text-xl px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 rounded-2xl font-semibold shadow-2xl relative overflow-hidden group"
+          className="relative text-white text-base sm:text-lg md:text-xl px-10 sm:px-14 md:px-20 py-5 sm:py-6 md:py-7 rounded-2xl font-bold shadow-2xl overflow-hidden group cursor-pointer"
           onClick={() => router.push('/create')}
           whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 0 40px rgba(168, 85, 247, 0.6)"
+            scale: 1.08,
+            y: -5
           }}
-          whileTap={{ scale: 0.95 }}
-          animate={{
-            boxShadow: [
-              "0 10px 40px rgba(168, 85, 247, 0.3)",
-              "0 10px 60px rgba(168, 85, 247, 0.5)",
-              "0 10px 40px rgba(168, 85, 247, 0.3)"
-            ]
-          }}
-          transition={{
-            boxShadow: {
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }
+          whileTap={{ scale: 0.98 }}
+          style={{
+            background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(236, 72, 153, 0.9) 50%, rgba(59, 130, 246, 0.9) 100%)',
           }}
         >
-          <span className="relative z-10 flex items-center gap-2 cursor-default select-none">
+          {/* Animated gradient border */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl opacity-75 blur-xl"
+            animate={{
+              background: [
+                "linear-gradient(45deg, #a855f7, #ec4899, #3b82f6, #a855f7)",
+                "linear-gradient(90deg, #ec4899, #3b82f6, #a855f7, #ec4899)",
+                "linear-gradient(135deg, #3b82f6, #a855f7, #ec4899, #3b82f6)",
+                "linear-gradient(180deg, #a855f7, #ec4899, #3b82f6, #a855f7)",
+              ]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          
+          {/* Shimmer effect */}
+          <motion.div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100"
+            style={{
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+            }}
+            animate={{
+              x: ['-100%', '200%']
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Main background with glass effect */}
+          <div className="absolute inset-[2px] rounded-2xl backdrop-blur-xl"
+            style={{
+              background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.8) 0%, rgba(236, 72, 153, 0.8) 50%, rgba(59, 130, 246, 0.8) 100%)',
+            }}
+          />
+
+          {/* Pulsing glow effect */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl"
+            animate={{
+              boxShadow: [
+                "0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(236, 72, 153, 0.3)",
+                "0 0 40px rgba(168, 85, 247, 0.8), 0 0 80px rgba(236, 72, 153, 0.5)",
+                "0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(236, 72, 153, 0.3)"
+              ]
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Button text */}
+          <span className="relative z-10 flex items-center gap-3 select-none font-extrabold tracking-wide">
+            <motion.span
+              className="text-2xl"
+              animate={{ 
+                rotate: [0, 15, -15, 0],
+                scale: [1, 1.2, 1.2, 1]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              ✨
+            </motion.span>
             Get Started
             <motion.span
+              className="text-xl"
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               →
             </motion.span>
           </span>
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-purple-600/50 to-pink-600/50"
-            animate={{
-              opacity: [0.5, 0.8, 0.5]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
         </motion.button>
       </motion.div>
       

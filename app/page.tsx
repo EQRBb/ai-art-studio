@@ -9,6 +9,8 @@ import { Sidebar } from './components/home/Sidebar'
 import { useImageGeneration } from './hooks/useImageGeneration'
 import { Stats } from './components/home/Stats'
 import { GalleryPreview } from './components/home/GalleryPreview'
+import { Testimonials } from './components/home/Testimonials'
+import { ToolsCarousel } from './components/home/ToolsCarousel'
 
 export default function Home() {
   const promptInputRef = useRef<HTMLTextAreaElement>(null)
@@ -33,25 +35,19 @@ export default function Home() {
 
         {/* Stats Bar */}
         <Stats />
-
-        {/* Main Content - Centered Flow */}
-        <div className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
-          {/* Generation Area - Centered with larger width */}
-          <div className="max-w-3xl mx-auto space-y-6">
-            {/* Input Form */}
-
-
-            {/* Generated Image Display - Directly Below Input */}
-
-            
-          </div>
-        </div>
       </div>
+
+      {/* Tools Carousel - Full Width */}
+      <ToolsCarousel />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
       <GalleryPreview images={recentImages} loading={recentImagesLoading} />
-          {/* FAQ Section */}
-          <div className="max-w-4xl mx-auto">
-            <FAQ />
-          </div>
+      {/* FAQ Section */}
+      <div className="max-w-4xl mx-auto">
+        <FAQ />
+      </div>
       {/* Features Section */}
       <Features />
     </div>
